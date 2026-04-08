@@ -1,0 +1,17 @@
+(base) andrewdickson@AJMD data-pipe-april-26 % aws ecr create-repository --repository-name data-pipe --region ap-southeast-2
+{
+    "repository": {
+        "repositoryArn": "arn:aws:ecr:ap-southeast-2:228655407137:repository/data-pipe",
+        "registryId": "228655407137",
+        "repositoryName": "data-pipe",
+        "repositoryUri": "228655407137.dkr.ecr.ap-southeast-2.amazonaws.com/data-pipe",
+        "createdAt": "2026-04-06T17:55:47.820000+10:00",
+        "imageTagMutability": "MUTABLE",
+        "imageScanningConfiguration": {
+            "scanOnPush": false
+        },
+        "encryptionConfiguration": {
+            "encryptionType": "AES256"
+        }
+    }
+}
