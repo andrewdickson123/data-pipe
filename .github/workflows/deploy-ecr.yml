@@ -1,4 +1,4 @@
-name: Build and Push to ECR
+name: Build Push and Deploy to ECS
 
 on:
   push:
@@ -12,9 +12,11 @@ permissions:
 env:
   AWS_REGION: ap-southeast-2
   ECR_REPOSITORY: data-pipe
+  ECS_CLUSTER: data-pipe-cluster
+  ECS_SERVICE: data-pipe-service-5pys1qd0
 
 jobs:
-  build-and-push:
+  build-push-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -43,3 +45,10 @@ jobs:
       - name: Push Docker image to ECR
         run: |
           docker push ${{ steps.login-ecr.outputs.registry }}/$ECR_REPOSITORY:latest
+
+      - name: Force new ECS deployment
+        run: |
+          aws ecs update-service \
+            --cluster $ECS_CLUSTER \
+            --service $ECS_SERVICE \
+            --force-new-deployment
