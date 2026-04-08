@@ -1,1 +1,1 @@
-module.exports = ['purchases'];
+module.exports = ['purchase'];
